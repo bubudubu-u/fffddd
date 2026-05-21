@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Gift For You 💖 Motki kholo isee fat fat😎</title>
+    <title>Special Gift For You 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,7 +74,7 @@
         }
         .screen.active { display: flex; }
 
-        /* ── SCREEN 1 ── */
+        /* ── SCREEN 1: WELCOME ── */
         #s-welcome { justify-content: center; }
 
         .sticker-zone {
@@ -227,19 +227,73 @@
         #s-letter {
             justify-content: flex-start;
             overflow: hidden;
+            padding: 10px 14px 10px;
+        }
+
+        .letter-header {
+            width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .letter-header-title {
+            background: linear-gradient(135deg, #fff0f7, #ffe4f0);
+            border: 2px solid #ffb3d1;
+            border-radius: 20px;
+            padding: 5px 18px;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #e91e8c;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        /* GIF BOX — aap yahan apna GIF daal sakte ho */
+        .gif-box {
+            width: 100%;
+            flex-shrink: 0;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid #ffb3d1;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #fff0f7, #ffe4f0);
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .gif-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: #ffb3d1;
+        }
+        .gif-placeholder-icon { font-size: 36px; animation: bloop 2s ease-in-out infinite; }
+        .gif-placeholder-text { font-size: 11px; color: #e91e8c; font-weight: 600; text-align: center; line-height: 1.4; }
+        /* GIF actual image — replace src below */
+        .gif-actual {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* JS se show hoga agar src set hai */
         }
 
         .letter-wrap {
             width: 100%;
             flex: 1;
-            min-height: 0; /* KEY FIX for flex overflow */
+            min-height: 0;
             background: linear-gradient(160deg, #fffef5, #fff8fd);
             border: 2px solid #ffd6e8;
-            border-radius: 24px;
-            margin: 8px 0;
-            padding: 20px 20px 18px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            padding: 14px 16px 14px;
             position: relative;
-            overflow-y: auto; /* SCROLLABLE */
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             box-shadow: 0 4px 20px rgba(255,80,150,0.08);
         }
@@ -251,60 +305,71 @@
                 transparent 31px,
                 rgba(255,182,193,0.3) 32px
             );
-            background-position: 0 58px;
+            background-position: 0 48px;
             pointer-events: none;
+            border-radius: 20px;
         }
         .letter-left-border {
             position: absolute;
-            left: 46px;
+            left: 38px;
             top: 0; bottom: 0;
             width: 2px;
             background: rgba(255,182,193,0.5);
             pointer-events: none;
         }
-        .letter-content { position: relative; z-index: 1; padding-left: 20px; }
+        .letter-content { position: relative; z-index: 1; padding-left: 14px; }
         .letter-date {
-            font-size: 12px;
+            font-size: 11px;
             color: #ccc;
             text-align: right;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             font-family: 'Playfair Display', serif;
             font-style: italic;
         }
         .letter-greeting {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 22px;
+            font-size: 20px;
             color: #e91e8c;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
         .letter-para {
-            font-size: 13.5px;
+            font-size: 12.5px;
             color: #555;
             line-height: 2;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+        }
+        .letter-highlight {
+            background: linear-gradient(135deg, #fff0f7, #ffe4f0);
+            border-left: 3px solid #ff79b0;
+            border-radius: 0 10px 10px 0;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 12px;
+            color: #c2185b;
+            font-weight: 600;
+            font-style: italic;
         }
         .letter-sign {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 20px;
+            font-size: 18px;
             color: #e91e8c;
             text-align: right;
-            margin-top: 14px;
+            margin-top: 10px;
         }
         .letter-stickers {
             position: absolute;
-            top: 10px;
-            right: 12px;
-            font-size: 22px;
-            line-height: 1.4;
+            top: 8px;
+            right: 10px;
+            font-size: 18px;
+            line-height: 1.5;
             text-align: right;
             pointer-events: none;
         }
         .letter-btn-wrap {
             width: 100%;
             flex-shrink: 0;
-            padding-bottom: 4px;
         }
 
         /* ── SCREEN 4: FINAL ── */
@@ -318,7 +383,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             animation: spinSlow 8s linear infinite;
         }
         @keyframes spinSlow { 100% { transform: rotate(360deg); } }
@@ -337,13 +402,33 @@
         .final-title {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 28px;
+            font-size: 26px;
             color: #e91e8c;
             margin-bottom: 6px;
             text-align: center;
         }
-        .final-sub { font-size: 13px; color: #bbb; margin-bottom: 32px; }
-        .final-stickers { font-size: 28px; letter-spacing: 6px; margin-bottom: 28px; }
+        .final-sub { font-size: 13px; color: #bbb; margin-bottom: 16px; text-align: center; }
+        .final-stickers { font-size: 26px; letter-spacing: 6px; margin-bottom: 20px; }
+
+        /* Final memory strip */
+        .memory-strip {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+        .memory-chip {
+            background: linear-gradient(135deg, #fff0f7, #ffe4f0);
+            border: 1.5px solid #ffb3d1;
+            border-radius: 20px;
+            padding: 5px 12px;
+            font-size: 11px;
+            color: #c2185b;
+            font-weight: 700;
+        }
+
         .btn-outline {
             background: transparent;
             border: 2px solid #e91e8c;
@@ -371,6 +456,11 @@
             0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
             100% { opacity: 0; transform: translateY(300px) rotate(720deg) scale(0); }
         }
+
+        /* Scrollbar styling */
+        .letter-wrap::-webkit-scrollbar { width: 4px; }
+        .letter-wrap::-webkit-scrollbar-track { background: transparent; }
+        .letter-wrap::-webkit-scrollbar-thumb { background: #ffb3d1; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -421,13 +511,36 @@
         <div class="revealed-notes" id="notes-area"></div>
 
         <button class="btn-main btn-to-letter" id="btn-letter" onclick="goTo('s-letter')">
-            Mera pyara letter pado mutki ldki 💌
+            Mera pyara letter pado 💌
         </button>
     </div>
 
-    <!-- SCREEN 3: LETTER -->
+    <!-- SCREEN 3: LETTER (IMPROVED) -->
     <div id="s-letter" class="screen">
-        <div class="game-title-banner" style="margin-bottom:4px; flex-shrink:0;">Sirf tere liye likha hai 💌</div>
+
+        <div class="letter-header">
+            <div class="letter-header-title">Sirf tere liye likha hai 💌</div>
+        </div>
+
+        <!-- 
+            ════════════════════════════════════════
+            🎬 GIF DAALNE KA TARIKA:
+            Neeche wali line mein GIF ka path daal do:
+            GIF_SRC = "apna-gif-file-name.gif";
+            ════════════════════════════════════════
+        -->
+        <div class="gif-box" id="gif-box">
+            <!-- Placeholder — JS se GIF load hoga -->
+            <div class="gif-placeholder" id="gif-placeholder">
+                <div class="gif-placeholder-icon">🎬</div>
+                <div class="gif-placeholder-text">
+                    Apna animated GIF<br>yahan aayega 🐻💕<br>
+                    <span style="font-size:9px;opacity:0.7;">(neeche JS mein path daal do)</span>
+                </div>
+            </div>
+            <img class="gif-actual" id="gif-img" src="" alt="our gif" />
+        </div>
+
         <div class="letter-wrap">
             <div class="letter-lines"></div>
             <div class="letter-left-border"></div>
@@ -435,23 +548,37 @@
             <div class="letter-content">
                 <div class="letter-date">Aaj ka din, hamesha ke liye ♡</div>
                 <div class="letter-greeting">Hey Dubu, meri jaan,</div>
+
                 <div class="letter-para">
                     Jaanta hoon tu kabhi kabhi khud ko underestimate karti hai — lekin main chahta hoon tu jaane ki tu kitni special hai mere liye. Teri ek smile mera poora din bana deti hai. 🌸
                 </div>
+
+                <div class="letter-highlight">
+                    "Teri hansi meri sabse favourite awaaz hai duniya mein." 💕
+                </div>
+
                 <div class="letter-para">
                     Tere cute se gusse mein bhi, teri uss ek naraazgi mein bhi — mujhe sirf teri yaad aati hai. Tere chote chote habits, tera hasna, tera drama — sab kuch mujhe tujhse aur bhi pyaar karta hai. 🐻💕
                 </div>
+
                 <div class="letter-para">
                     Tu sirf meri girlfriend nahi hai, tu meri sabse badi strength hai. Jab bhi main ghabra jaata hoon, tera naam lene se hi dil ko sukoon milta hai.
                 </div>
-                <div class="letter-para">
-                    So please — kabhi mat sochna ki tu important nahi hai. Tu meri duniya ka sabse important hissa hai. Always and forever. 💖✨
+
+                <div class="letter-highlight">
+                    "Hum do alag log hain — par tere bina main adhoora hoon." ✨
                 </div>
+
+                <div class="letter-para">
+                    So please — kabhi mat sochna ki tu important nahi hai. Tu meri duniya ka sabse important hissa hai. Aaj, kal, aur hamesha. Main hoon na, tere saath. 💖
+                </div>
+
                 <div class="letter-sign">
                     — Hamesha tera, Boss dudu 🐻
                 </div>
             </div>
         </div>
+
         <div class="letter-btn-wrap">
             <button class="btn-main" style="width:100%;" onclick="goTo('s-final'); spawnConfetti();">
                 Continue ❤️
@@ -459,19 +586,42 @@
         </div>
     </div>
 
-    <!-- SCREEN 4: FINAL -->
+    <!-- SCREEN 4: FINAL (IMPROVED) -->
     <div id="s-final" class="screen">
         <div class="final-bubble">
             <div class="final-inner">💖</div>
         </div>
         <div class="final-title">Tu bahut special hai!</div>
         <div class="final-sub">Kabhi mat bhoolna yeh baat. 🌸</div>
+
+        <div class="memory-strip" id="memory-strip">
+            <!-- Game ke baad yahan notes aayenge -->
+        </div>
+
         <div class="final-stickers">🐻 💖 🌸 ✨ 🍭</div>
         <button class="btn-outline" onclick="resetAll()">Phir se padhna hai ↻</button>
     </div>
 </div>
 
 <script>
+// ════════════════════════════════════════════════════════
+// 🎬 GIF DAALNE KA TARIKA — SIRF YAHAN CHANGE KARO:
+// Apne GIF ka URL ya file path daal do neeche:
+// Example: const GIF_SRC = "cute-bear.gif";
+// Example: const GIF_SRC = "https://share.google/3aoY7yTo431ZKU2jt";
+// Agar GIF nahi chahiye toh khali string rehne do: ""
+// ════════════════════════════════════════════════════════
+const GIF_SRC = "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyaWVoaW14OTZxZDRobTViNm5tcGNycm5wYTd4N2Z4cjE0ZXVncnE2cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kCqhMzivjgI4kFMuhF/giphy.gif";   // <-- YAHAN DAAL DO APNA GIF
+
+// GIF load logic
+if(GIF_SRC && GIF_SRC.trim() !== "") {
+    const img = document.getElementById('gif-img');
+    const placeholder = document.getElementById('gif-placeholder');
+    img.src = GIF_SRC;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+}
+
 // BG HEARTS
 const bgH = document.getElementById('bg-hearts');
 for(let i=0;i<20;i++){
@@ -487,11 +637,28 @@ for(let i=0;i<20;i++){
 
 // SCREEN NAV
 let currentRaf = null;
+let collectedNotes = [];
+
 function goTo(id){
     if(currentRaf){ cancelAnimationFrame(currentRaf); currentRaf=null; }
     document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     if(id==='s-game') initArchery();
+    if(id==='s-final') buildMemoryStrip();
+}
+
+// Memory strip on final screen
+function buildMemoryStrip(){
+    const strip = document.getElementById('memory-strip');
+    strip.innerHTML = '';
+    const defaults = ["Teri smile 🌸","Tera hasna 😂","Tera drama 🎭","Teri yaad 💕","Mera sukoon ✨"];
+    const notes = collectedNotes.length > 0 ? collectedNotes : defaults;
+    notes.forEach(note => {
+        const chip = document.createElement('div');
+        chip.className = 'memory-chip';
+        chip.textContent = note;
+        strip.appendChild(chip);
+    });
 }
 
 // CONFETTI
@@ -526,36 +693,28 @@ function initArchery(){
     const ctx = canvas.getContext('2d');
     const W = canvas.width, H = canvas.height;
 
-    // Reset UI
     document.getElementById('notes-area').innerHTML = '';
     document.getElementById('btn-letter').style.display = 'none';
     document.getElementById('game-banner').textContent = 'Kheench aur chhodna dhanush! 🏹';
+    collectedNotes = [];
     for(let i=0;i<5;i++){
         const p=document.getElementById('pill-'+i);
         p.textContent='🤍'; p.classList.remove('popped');
     }
 
-    // Targets — fixed positions, NO wiggle offset in y stored separately
     const targets = [];
     const positions = [
-        {x:70, y:65},
-        {x:220,y:45},
-        {x:290,y:115},
-        {x:130,y:135},
-        {x:185,y:78}
+        {x:70, y:65},{x:220,y:45},{x:290,y:115},{x:130,y:135},{x:185,y:78}
     ];
     positions.forEach((pos,i)=>{
         targets.push({
-            x: pos.x,
-            baseY: pos.y,   // store base Y separately
-            r: 26,          // hit radius (bigger = easier to hit)
+            x: pos.x, baseY: pos.y, r: 26,
             alive: true,
             wiggle: Math.random()*Math.PI*2,
             wiggleSpeed: 0.035+Math.random()*0.02,
-            wiggleAmp: 5,   // wiggle amplitude pixels
-            popped: false,
-            popAnim: 0,
-            id: i
+            wiggleAmp: 5,
+            popped: false, popAnim: 0,
+            currentY: pos.y, id: i
         });
     });
 
@@ -576,19 +735,13 @@ function initArchery(){
                 y:(e.touches[0].clientY-rect.top)*scaleY
             };
         }
-        return {
-            x:(e.clientX-rect.left)*scaleX,
-            y:(e.clientY-rect.top)*scaleY
-        };
+        return {x:(e.clientX-rect.left)*scaleX, y:(e.clientY-rect.top)*scaleY};
     }
 
     function startPull(e){
         const pos = getPos(e);
         const dx = pos.x - bowBase.x, dy = pos.y - bowBase.y;
-        if(Math.sqrt(dx*dx+dy*dy)<65){
-            isDragging = true;
-            pullPoint = {x:bowBase.x, y:bowBase.y};
-        }
+        if(Math.sqrt(dx*dx+dy*dy)<65){ isDragging=true; pullPoint={x:bowBase.x,y:bowBase.y}; }
     }
     function onMove(e){
         if(!isDragging) return;
@@ -605,12 +758,7 @@ function initArchery(){
         const power=Math.sqrt(dx*dx+dy*dy);
         if(power<10){pullPoint=null;return;}
         const len=power;
-        arrows.push({
-            x:bowBase.x, y:bowBase.y,
-            vx:(dx/len)*power*0.22,
-            vy:(dy/len)*power*0.22,
-            alive:true
-        });
+        arrows.push({x:bowBase.x,y:bowBase.y,vx:(dx/len)*power*0.22,vy:(dy/len)*power*0.22,alive:true});
         pullPoint=null;
     }
 
@@ -623,14 +771,10 @@ function initArchery(){
 
     function popTarget(t){
         if(!t.alive) return;
-        t.alive=false;
-        t.popped=true;
-        t.popAnim=1;
+        t.alive=false; t.popped=true; t.popAnim=1;
         poppedCount++;
-        // Particles
         for(let i=0;i<14;i++){
-            const angle=Math.random()*Math.PI*2;
-            const sp=3+Math.random()*5;
+            const angle=Math.random()*Math.PI*2, sp=3+Math.random()*5;
             particles.push({
                 x:t.x, y:t.currentY,
                 vx:Math.cos(angle)*sp, vy:Math.sin(angle)*sp,
@@ -646,6 +790,7 @@ function initArchery(){
         chip.className='note-chip';
         chip.textContent=loveNotes[t.id];
         notesArea.prepend(chip);
+        collectedNotes.push(loveNotes[t.id]);
         if(poppedCount===5){
             document.getElementById('game-banner').textContent='Sab tod diye! Tu best hai 🎉';
             document.getElementById('btn-letter').style.display='block';
@@ -655,26 +800,21 @@ function initArchery(){
     function loop(){
         ctx.clearRect(0,0,W,H);
 
-        // Background
         const grad=ctx.createLinearGradient(0,0,0,H);
         grad.addColorStop(0,'#fff5fb');
         grad.addColorStop(1,'#ffe8f3');
         ctx.fillStyle=grad;
         ctx.fillRect(0,0,W,H);
 
-        // Grass strip
         ctx.fillStyle='rgba(255,182,210,0.15)';
         ctx.fillRect(0,H-35,W,35);
 
-        // Update targets wiggle & draw
         targets.forEach(t=>{
             t.wiggle+=t.wiggleSpeed;
             t.currentY = t.baseY + Math.sin(t.wiggle)*t.wiggleAmp;
-
             if(t.alive){
                 ctx.save();
                 ctx.translate(t.x, t.currentY);
-                // String (dashed line down to canvas bottom area)
                 ctx.strokeStyle='rgba(255,150,180,0.4)';
                 ctx.lineWidth=1.5;
                 ctx.setLineDash([3,4]);
@@ -683,13 +823,10 @@ function initArchery(){
                 ctx.lineTo(0, H - t.currentY - 20);
                 ctx.stroke();
                 ctx.setLineDash([]);
-                // Heart balloon
                 ctx.font='44px serif';
                 ctx.textAlign='center';
                 ctx.textBaseline='middle';
                 ctx.fillText('💖',0,0);
-                // Debug hit circle (remove in prod)
-                // ctx.strokeStyle='rgba(255,0,0,0.3)'; ctx.beginPath(); ctx.arc(0,0,t.r,0,Math.PI*2); ctx.stroke();
                 ctx.restore();
             } else if(t.popped && t.popAnim>0){
                 t.popAnim-=0.04;
@@ -704,11 +841,9 @@ function initArchery(){
             }
         });
 
-        // Particles
         for(let i=particles.length-1;i>=0;i--){
             const p=particles[i];
-            p.x+=p.vx; p.y+=p.vy; p.vy+=0.15;
-            p.life-=0.025;
+            p.x+=p.vx; p.y+=p.vy; p.vy+=0.15; p.life-=0.025;
             if(p.life<=0){ particles.splice(i,1); continue; }
             ctx.save();
             ctx.globalAlpha=p.life;
@@ -718,113 +853,57 @@ function initArchery(){
             ctx.restore();
         }
 
-        // Arrows — check hit against ACTUAL current position
         for(let i=arrows.length-1;i>=0;i--){
             const a=arrows[i];
             if(!a.alive){ arrows.splice(i,1); continue; }
             a.x+=a.vx; a.y+=a.vy; a.vy+=0.35;
-
-            // Hit detection using currentY (actual rendered position)
             targets.forEach(t=>{
                 if(!t.alive) return;
-                const dx=a.x-t.x;
-                const dy=a.y-t.currentY;  // use currentY not baseY
-                const dist=Math.sqrt(dx*dx+dy*dy);
-                if(dist < t.r + 10){      // +10 for generous hit box
-                    a.alive=false;
-                    popTarget(t);
-                }
+                const dx=a.x-t.x, dy=a.y-t.currentY;
+                if(Math.sqrt(dx*dx+dy*dy) < t.r+10){ a.alive=false; popTarget(t); }
             });
-
             if(a.y>H+20||a.x<-20||a.x>W+20){ a.alive=false; continue; }
             if(!a.alive) continue;
-
-            // Draw arrow
             const angle=Math.atan2(a.vy,a.vx);
             ctx.save();
             ctx.translate(a.x,a.y);
             ctx.rotate(angle);
-            ctx.strokeStyle='#8B4513';
-            ctx.lineWidth=3;
-            ctx.lineCap='round';
-            ctx.beginPath();
-            ctx.moveTo(-20,0);
-            ctx.lineTo(12,0);
-            ctx.stroke();
+            ctx.strokeStyle='#8B4513'; ctx.lineWidth=3; ctx.lineCap='round';
+            ctx.beginPath(); ctx.moveTo(-20,0); ctx.lineTo(12,0); ctx.stroke();
             ctx.fillStyle='#c0392b';
-            ctx.beginPath();
-            ctx.moveTo(12,-4);
-            ctx.lineTo(20,0);
-            ctx.lineTo(12,4);
-            ctx.closePath();
-            ctx.fill();
+            ctx.beginPath(); ctx.moveTo(12,-4); ctx.lineTo(20,0); ctx.lineTo(12,4); ctx.closePath(); ctx.fill();
             ctx.fillStyle='#ffb3d1';
-            ctx.beginPath();
-            ctx.moveTo(-20,-1);
-            ctx.lineTo(-14,-6);
-            ctx.lineTo(-10,-1);
-            ctx.closePath();
-            ctx.fill();
+            ctx.beginPath(); ctx.moveTo(-20,-1); ctx.lineTo(-14,-6); ctx.lineTo(-10,-1); ctx.closePath(); ctx.fill();
             ctx.restore();
         }
 
-        // BOW
         const bx=bowBase.x, by=bowBase.y;
-        ctx.strokeStyle='#8B4513';
-        ctx.lineWidth=4;
-        ctx.lineCap='round';
-        ctx.beginPath();
-        ctx.arc(bx,by,32,-Math.PI*0.9,-Math.PI*0.1);
-        ctx.stroke();
+        ctx.strokeStyle='#8B4513'; ctx.lineWidth=4; ctx.lineCap='round';
+        ctx.beginPath(); ctx.arc(bx,by,32,-Math.PI*0.9,-Math.PI*0.1); ctx.stroke();
+
+        const topTip={x:bx+Math.cos(-Math.PI*0.9)*32,y:by+Math.sin(-Math.PI*0.9)*32};
+        const botTip={x:bx+Math.cos(-Math.PI*0.1)*32,y:by+Math.sin(-Math.PI*0.1)*32};
 
         if(isDragging && pullPoint){
-            const topTip={x:bx+Math.cos(-Math.PI*0.9)*32, y:by+Math.sin(-Math.PI*0.9)*32};
-            const botTip={x:bx+Math.cos(-Math.PI*0.1)*32, y:by+Math.sin(-Math.PI*0.1)*32};
-            ctx.strokeStyle='rgba(139,69,19,0.7)';
-            ctx.lineWidth=2;
-            ctx.beginPath();
-            ctx.moveTo(topTip.x,topTip.y);
-            ctx.lineTo(pullPoint.x,pullPoint.y);
-            ctx.lineTo(botTip.x,botTip.y);
-            ctx.stroke();
-            // Arrow on string
-            const aAngle=Math.atan2(bowBase.y-pullPoint.y, bowBase.x-pullPoint.x);
-            ctx.save();
-            ctx.translate(pullPoint.x,pullPoint.y);
-            ctx.rotate(aAngle);
-            ctx.strokeStyle='#8B4513';
-            ctx.lineWidth=3;
-            ctx.beginPath();
-            ctx.moveTo(-20,0); ctx.lineTo(12,0);
-            ctx.stroke();
-            ctx.fillStyle='#c0392b';
-            ctx.beginPath();
-            ctx.moveTo(12,-4); ctx.lineTo(20,0); ctx.lineTo(12,4);
-            ctx.closePath(); ctx.fill();
-            ctx.fillStyle='#ffb3d1';
-            ctx.beginPath();
-            ctx.moveTo(-20,-1); ctx.lineTo(-14,-6); ctx.lineTo(-10,-1);
-            ctx.closePath(); ctx.fill();
+            ctx.strokeStyle='rgba(139,69,19,0.7)'; ctx.lineWidth=2;
+            ctx.beginPath(); ctx.moveTo(topTip.x,topTip.y); ctx.lineTo(pullPoint.x,pullPoint.y); ctx.lineTo(botTip.x,botTip.y); ctx.stroke();
+            const aAngle=Math.atan2(bowBase.y-pullPoint.y,bowBase.x-pullPoint.x);
+            ctx.save(); ctx.translate(pullPoint.x,pullPoint.y); ctx.rotate(aAngle);
+            ctx.strokeStyle='#8B4513'; ctx.lineWidth=3;
+            ctx.beginPath(); ctx.moveTo(-20,0); ctx.lineTo(12,0); ctx.stroke();
+            ctx.fillStyle='#c0392b'; ctx.beginPath(); ctx.moveTo(12,-4); ctx.lineTo(20,0); ctx.lineTo(12,4); ctx.closePath(); ctx.fill();
+            ctx.fillStyle='#ffb3d1'; ctx.beginPath(); ctx.moveTo(-20,-1); ctx.lineTo(-14,-6); ctx.lineTo(-10,-1); ctx.closePath(); ctx.fill();
             ctx.restore();
             const pull=Math.min(Math.sqrt((pullPoint.x-bowBase.x)**2+(pullPoint.y-bowBase.y)**2),70)/70;
             ctx.fillStyle=`rgba(255,${Math.round(80+100*(1-pull))},150,0.9)`;
-            ctx.font='bold 12px Nunito';
-            ctx.textAlign='center';
+            ctx.font='bold 12px Nunito'; ctx.textAlign='center';
             ctx.fillText(pull>0.7?'Release! 🏹':'Kheench...', bx, by+52);
         } else {
-            const topTip={x:bx+Math.cos(-Math.PI*0.9)*32, y:by+Math.sin(-Math.PI*0.9)*32};
-            const botTip={x:bx+Math.cos(-Math.PI*0.1)*32, y:by+Math.sin(-Math.PI*0.1)*32};
-            ctx.strokeStyle='rgba(139,69,19,0.5)';
-            ctx.lineWidth=1.5;
-            ctx.beginPath();
-            ctx.moveTo(topTip.x,topTip.y);
-            ctx.lineTo(botTip.x,botTip.y);
-            ctx.stroke();
+            ctx.strokeStyle='rgba(139,69,19,0.5)'; ctx.lineWidth=1.5;
+            ctx.beginPath(); ctx.moveTo(topTip.x,topTip.y); ctx.lineTo(botTip.x,botTip.y); ctx.stroke();
         }
 
-        ctx.fillStyle='rgba(200,100,150,0.6)';
-        ctx.font='11px Nunito';
-        ctx.textAlign='center';
+        ctx.fillStyle='rgba(200,100,150,0.6)'; ctx.font='11px Nunito'; ctx.textAlign='center';
         ctx.fillText('Tap & drag yahan 👇', bx, by+66);
 
         currentRaf = requestAnimationFrame(loop);
@@ -832,9 +911,7 @@ function initArchery(){
     loop();
 }
 
-function resetAll(){
-    goTo('s-welcome');
-}
+function resetAll(){ goTo('s-welcome'); }
 </script>
 </body>
 </html>
